@@ -270,6 +270,65 @@ local function config(_, opts)
 			},
 		},
 
+		lspinactive = {
+			provider = function()
+				if not lsp.is_lsp_attached() then
+					return " 󱏎 LSP "
+				end
+
+				local client_name = get_lsp_client_name()
+				if is_lsp_loading(client_name) then
+					return string.format(" %s LSP ", progress[clients[client_name].progress_index])
+				else
+					return " 󱁛 LSP "
+				end
+			end,
+			hl = function()
+				if not lsp.is_lsp_attached() then
+					return { fg = palette.bg0, bg = palette.fg3 }
+				end
+
+				local client_name = get_lsp_client_name()
+				if is_lsp_loading(client_name) then
+					return { fg = palette.bg0, bg = palette.yellow.base }
+				end
+
+				return { fg = palette.bg0, bg = palette.green.base }
+			end,
+			left_sep = {
+				always_visible = true,
+				str = separators.slant_right,
+				hl = function()
+					if not lsp.is_lsp_attached() then
+						return { fg = palette.bg0, bg = palette.fg3 }
+					end
+
+					local client_name = get_lsp_client_name()
+					if is_lsp_loading(client_name) then
+						return { fg = palette.bg0, bg = palette.yellow.base }
+					end
+
+					return { fg = palette.bg0, bg = palette.green.base }
+				end,
+			},
+			right_sep = {
+				always_visible = true,
+				str = separators.slant_right,
+				hl = function()
+					if not lsp.is_lsp_attached() then
+						return { fg = palette.fg3, bg = "none" }
+					end
+
+					local client_name = get_lsp_client_name()
+					if is_lsp_loading(client_name) then
+						return { fg = palette.yellow.base, bg = "none" }
+					end
+
+					return { fg = palette.green.base, bg = "none" }
+				end,
+			},
+		},
+
 		-- table.insert(components.active[left], {
 		-- 	provider = function()
 		-- 		local s
@@ -503,7 +562,7 @@ local function config(_, opts)
 			c.vim_status,
 			c.file_name,
 			c.git_branch,
-			c.lsp,
+			c.lspinactive,
 		},
 		{ -- right
 			c.in_file_info,
