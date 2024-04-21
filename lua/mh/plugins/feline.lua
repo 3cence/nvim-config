@@ -211,6 +211,71 @@ local function config(_, opts)
 			},
 		},
 
+		git_dif_added_left = {
+			provider = function()
+				local git = require("feline.providers.git")
+				local status = git.git_diff_added()
+				local s
+				if status then
+					s = string.format(" %s %s ", "", status)
+				else
+					s = ""
+				end
+				return s
+			end,
+			hl = { fg = palette.bg0, bg = palette.green.base },
+			left_sep = {
+				always_visible = true,
+				str = separators.slant_left,
+				hl = { fg = palette.green.base, bg = "none" },
+			},
+		},
+
+		git_dif_changed_left = {
+			provider = function()
+				local git = require("feline.providers.git")
+				local status = git.git_diff_changed()
+				local s
+				if status then
+					s = string.format(" %s %s ", "", status)
+				else
+					s = ""
+				end
+				return s
+			end,
+			hl = { fg = palette.bg0, bg = palette.yellow.base },
+			left_sep = {
+				always_visible = true,
+				str = separators.slant_left,
+				hl = { fg = palette.yellow.base, bg = palette.green.base },
+			},
+		},
+
+		git_dif_removed_left = {
+			provider = function()
+				local git = require("feline.providers.git")
+				local status = git.git_diff_removed()
+				local s
+				if status then
+					s = string.format(" %s %s ", "", status)
+				else
+					s = ""
+				end
+				return s
+			end,
+			hl = { fg = palette.bg0, bg = palette.red.base },
+			right_sep = {
+				always_visible = true,
+				str = separators.slant_left,
+				hl = { fg = palette.bg0, bg = palette.red.base },
+			},
+			left_sep = {
+				always_visible = true,
+				str = separators.slant_left,
+				hl = { fg = palette.red.base, bg = palette.yellow.base },
+			},
+		},
+
 		lsp = {
 			provider = function()
 				if not lsp.is_lsp_attached() then
@@ -422,7 +487,7 @@ local function config(_, opts)
 				always_visible = true,
 				str = separators.slant_left,
 				hl = function()
-					return { fg = vi_mode.get_mode_color(), bg = "none" }
+					return { fg = vi_mode.get_mode_color(), bg = palette.bg0 }
 				end,
 			},
 			right_sep = {
@@ -543,12 +608,16 @@ local function config(_, opts)
 			c.vim_status,
 			c.file_name,
 			c.git_branch,
-			c.lsp,
-			c.git_dif_added,
-			c.git_dif_changed,
-			c.git_dif_removed,
+			c.lspinactive,
+			--  c.lsp,
+			--	c.git_dif_added,
+			--	c.git_dif_changed,
+			--	c.git_dif_removed,
 		},
 		{ -- right
+			c.git_dif_added_left,
+			c.git_dif_changed_left,
+			c.git_dif_removed_left,
 			c.vi_mode,
 			c.macro,
 			c.search_count,
