@@ -146,7 +146,7 @@ local function config(_, opts)
 			},
 		},
 
-		git_dif_added = {
+		git_dif_added_left = {
 			provider = function()
 				local git = require("feline.providers.git")
 				local status = git.git_diff_added()
@@ -166,7 +166,7 @@ local function config(_, opts)
 			},
 		},
 
-		git_dif_changed = {
+		git_dif_changed_left = {
 			provider = function()
 				local git = require("feline.providers.git")
 				local status = git.git_diff_changed()
@@ -186,7 +186,7 @@ local function config(_, opts)
 			},
 		},
 
-		git_dif_removed = {
+		git_dif_removed_left = {
 			provider = function()
 				local git = require("feline.providers.git")
 				local status = git.git_diff_removed()
@@ -211,7 +211,7 @@ local function config(_, opts)
 			},
 		},
 
-		git_dif_added_left = {
+		git_dif_added_right = {
 			provider = function()
 				local git = require("feline.providers.git")
 				local status = git.git_diff_added()
@@ -231,7 +231,7 @@ local function config(_, opts)
 			},
 		},
 
-		git_dif_changed_left = {
+		git_dif_changed_right = {
 			provider = function()
 				local git = require("feline.providers.git")
 				local status = git.git_diff_changed()
@@ -251,7 +251,7 @@ local function config(_, opts)
 			},
 		},
 
-		git_dif_removed_left = {
+		git_dif_removed_right = {
 			provider = function()
 				local git = require("feline.providers.git")
 				local status = git.git_diff_removed()
@@ -614,14 +614,14 @@ local function config(_, opts)
 			c.warning_count,
 			c.info_count,
 			c.hint_count,
-			--	c.git_dif_added,
-			--	c.git_dif_changed,
-			--	c.git_dif_removed,
+			--	c.git_dif_added_left,
+			--	c.git_dif_changed_left,
+			--	c.git_dif_removed_left,
 		},
 		{ -- right
-			c.git_dif_added_left,
-			c.git_dif_changed_left,
-			c.git_dif_removed_left,
+			c.git_dif_added_right,
+			c.git_dif_changed_right,
+			c.git_dif_removed_right,
 			c.vi_mode,
 			c.macro,
 			c.search_count,
