@@ -111,7 +111,7 @@ local function config(_, opts)
 		file_name = {
 			provider = {
 				name = "file_info",
-				opts = { colored_icon = false },
+				opts = { colored_icon = true },
 			},
 			hl = { fg = palette.bg0, bg = palette.white.base },
 			left_sep = {
@@ -146,67 +146,70 @@ local function config(_, opts)
 			},
 		},
 
-		-- table.insert(components.active[left], {
-		-- 	provider = function()
-		-- 		local status = git_diff('added')
-		-- 		local s
-		-- 		if status then
-		-- 			s = string.format(' %s %s ', '', status)
-		-- 		else
-		-- 			s = ''
-		-- 		end
-		-- 		return s
-		-- 	end,
-		-- 	hl = { fg = palette.bg0, bg = palette.green.base },
-		-- 	left_sep = {
-		-- 		always_visible = true,
-		-- 		str = separators.slant_right,
-		-- 		hl = { fg = palette.bg0, bg = palette.green.base },
-		-- 	},
-		-- })
+		git_dif_added = {
+			provider = function()
+				local git = require("feline.providers.git")
+				local status = git.git_diff_added()
+				local s
+				if status then
+					s = string.format(" %s %s ", "", status)
+				else
+					s = ""
+				end
+				return s
+			end,
+			hl = { fg = palette.bg0, bg = palette.green.base },
+			left_sep = {
+				always_visible = true,
+				str = separators.slant_right,
+				hl = { fg = palette.bg0, bg = palette.green.base },
+			},
+		},
 
-		-- table.insert(components.active[left], {
-		-- 	provider = function()
-		-- 		local status = git_diff('changed')
-		-- 		local s
-		-- 		if status then
-		-- 			s = string.format(' %s %s ', '', status)
-		-- 		else
-		-- 			s = ''
-		-- 		end
-		-- 		return s
-		-- 	end,
-		-- 	hl = { fg = palette.bg0, bg = palette.yellow.base },
-		-- 	left_sep = {
-		-- 		always_visible = true,
-		-- 		str = separators.slant_right,
-		-- 		hl = { fg = palette.green.base, bg = palette.yellow.base },
-		-- 	},
-		-- })
+		git_dif_changed = {
+			provider = function()
+				local git = require("feline.providers.git")
+				local status = git.git_diff_changed()
+				local s
+				if status then
+					s = string.format(" %s %s ", "", status)
+				else
+					s = ""
+				end
+				return s
+			end,
+			hl = { fg = palette.bg0, bg = palette.yellow.base },
+			left_sep = {
+				always_visible = true,
+				str = separators.slant_right,
+				hl = { fg = palette.green.base, bg = palette.yellow.base },
+			},
+		},
 
-		-- table.insert(components.active[left], {
-		-- 	provider = function()
-		-- 		local status = git_diff('removed')
-		-- 		local s
-		-- 		if status then
-		-- 			s = string.format(' %s %s ', '', status)
-		-- 		else
-		-- 			s = ''
-		-- 		end
-		-- 		return s
-		-- 	end,
-		-- 	hl = { fg = palette.bg0, bg = palette.red.base },
-		-- 	left_sep = {
-		-- 		always_visible = true,
-		-- 		str = separators.slant_right,
-		-- 		hl = { fg = palette.yellow.base, bg = palette.red.base },
-		-- 	},
-		-- 	right_sep = {
-		-- 		always_visible = true,
-		-- 		str = separators.slant_right,
-		-- 		hl = { fg = palette.red.base, bg = palette.bg0 },
-		-- 	},
-		-- })
+		git_dif_removed = {
+			provider = function()
+				local git = require("feline.providers.git")
+				local status = git.git_diff_removed()
+				local s
+				if status then
+					s = string.format(" %s %s ", "", status)
+				else
+					s = ""
+				end
+				return s
+			end,
+			hl = { fg = palette.bg0, bg = palette.red.base },
+			left_sep = {
+				always_visible = true,
+				str = separators.slant_right,
+				hl = { fg = palette.yellow.base, bg = palette.red.base },
+			},
+			right_sep = {
+				always_visible = true,
+				str = separators.slant_right,
+				hl = { fg = palette.red.base, bg = "none" },
+			},
+		},
 
 		lsp = {
 			provider = function()
@@ -254,15 +257,15 @@ local function config(_, opts)
 				str = separators.slant_right,
 				hl = function()
 					if not lsp.is_lsp_attached() then
-						return { fg = palette.fg3, bg = "none" }
+						return { fg = palette.fg3, bg = palette.bg0 }
 					end
 
 					local client_name = get_lsp_client_name()
 					if is_lsp_loading(client_name) then
-						return { fg = palette.yellow.base, bg = "none" }
+						return { fg = palette.yellow.base, bg = palette.bg0 }
 					end
 
-					return { fg = palette.green.base, bg = "none" }
+					return { fg = palette.green.base, bg = palette.bg0 }
 				end,
 			},
 		},
@@ -482,6 +485,9 @@ local function config(_, opts)
 			c.file_name,
 			c.git_branch,
 			c.lsp,
+			c.git_dif_added,
+			c.git_dif_changed,
+			c.git_dif_removed,
 		},
 		{ -- right
 			c.vi_mode,
