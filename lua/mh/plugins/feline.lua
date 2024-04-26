@@ -121,6 +121,14 @@ local function config(_, opts)
 			},
 		},
 
+		file_name_inactive = {
+			provider = {
+				name = "file_info",
+				opts = { colored_icon = true },
+			},
+			hl = { fg = palette.bg0, bg = palette.blue.base },
+		},
+
 		git_branch = {
 			provider = function()
 				local git = require("feline.providers.git")
@@ -601,6 +609,16 @@ local function config(_, opts)
 				hl = { fg = palette.bg0, bg = palette.blue.base },
 			},
 		},
+		in_file_info_inactive = {
+			provider = function()
+				if vim.api.nvim_buf_get_name(0) ~= "" then
+					return file.file_info({}, { colored_icon = false })
+				else
+					return file.file_type({}, { colored_icon = false, case = "lowercase" })
+				end
+			end,
+			hl = { fg = palette.bg0, bg = palette.blue.base },
+		},
 	}
 
 	local active = {
@@ -632,13 +650,13 @@ local function config(_, opts)
 
 	local inactive = {
 		{ -- left
-			c.vim_status,
-			c.file_name,
-			c.git_branch,
-			c.lspinactive,
+			-- c.vim_status,
+			c.file_name_inactive,
+			-- c.git_branch,
+			-- c.lspinactive,
 		},
 		{ -- right
-			c.in_file_info,
+			-- c.in_file_info_inactive,
 		},
 		--		{ -- left
 		--		},

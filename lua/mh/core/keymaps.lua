@@ -33,3 +33,14 @@ keymap.set("n", "<leader>tl", "<cmd>tabclose<CR>", { desc = "close current tab" 
 keymap.set("n", "L", "<cmd>tabn<CR>", { desc = "go to next tab" })
 keymap.set("n", "H", "<cmd>tabp<CR>", { desc = "go to prev tab" })
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "open current buffer in new tab" })
+
+-- debugger
+keymap.set("n", "<leader>dt", ":lua require('dapui').toggle()<CR>", { desc = "toggle debug ui", noremap = true })
+keymap.set("n", "<leader>db", ":DapToggleBreakpoint<CR>", { noremap = true })
+keymap.set("n", "<leader>dc", ":DapContinue<CR>", { noremap = true })
+keymap.set(
+	"n",
+	"<leader>dr",
+	":lua require('dapui').open({reset=true})<CR>",
+	{ desc = "reset debug ui", noremap = true }
+)
