@@ -44,3 +44,6 @@ keymap.set(
 	":lua require('dapui').open({reset=true})<CR>",
 	{ desc = "reset debug ui", noremap = true }
 )
+keymap.set("n", "<leader>i", ":DapStepInto<CR>", { noremap = true })
+keymap.set("n", "<leader>O", ":DapStepOut<CR>", { noremap = true })
+keymap.set("n", "<leader>o", ":DapStepOver<CR>", { noremap = true })
