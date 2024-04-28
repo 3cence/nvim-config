@@ -43,8 +43,8 @@ keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "list buffe
 keymap.set("n", "<leader>tt", "<cmd>tabnew<CR>", { desc = "open new tab" })
 keymap.set("n", "<leader>tl", "<cmd>tabclose<CR>", { desc = "close current tab" })
 keymap.set("n", "<leader>tc", ":bdelete<CR>", { desc = "close current tab and the currently selected buffer" })
-keymap.set("n", "L", "<cmd>tabn<CR>", { desc = "go to next tab" })
-keymap.set("n", "H", "<cmd>tabp<CR>", { desc = "go to prev tab" })
+keymap.set("n", "L", "<cmd>tabn<CR><cmd>checkt<CR>", { desc = "go to next tab" })
+keymap.set("n", "H", "<cmd>tabp<CR><cmd>checkt<CR>", { desc = "go to prev tab" })
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "open current buffer in new tab" })
 keymap.set("n", "<leader>bc", "<cmd>bdelete<CR>", { desc = "close current buffer" })
 
