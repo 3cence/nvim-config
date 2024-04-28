@@ -3,7 +3,7 @@ vim.g.mapleader = " "
 local keymap = vim.keymap
 
 -- normal mode
-keymap.set("i", "kj", "<Esc>")
+-- keymap.set("i", "kj", "<Esc>")
 
 -- save file with ctrl-s
 vim.api.nvim_set_keymap("n", "<C-s>", ":w<CR>", { noremap = true })
@@ -27,12 +27,14 @@ keymap.set("n", "<leader>sh", ":split<CR>", { desc = "split window horizontally"
 keymap.set("n", "<leader>sv", "<C-w>=", { desc = "make windows equal size" })
 keymap.set("n", "<leader>sl", "<cmd>close<CR>", { desc = "close current split" })
 
--- tab management
+-- tab and buffer management
 keymap.set("n", "<leader>tt", "<cmd>tabnew<CR>", { desc = "open new tab" })
 keymap.set("n", "<leader>tl", "<cmd>tabclose<CR>", { desc = "close current tab" })
+keymap.set("n", "<leader>tc", ":bdelete<CR>", { desc = "close current tab and the currently selected buffer" })
 keymap.set("n", "L", "<cmd>tabn<CR>", { desc = "go to next tab" })
 keymap.set("n", "H", "<cmd>tabp<CR>", { desc = "go to prev tab" })
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "open current buffer in new tab" })
+keymap.set("n", "<leader>bc", "<cmd>bdelete<CR>", { desc = "close current buffer" })
 
 -- debugger
 keymap.set("n", "<leader>dt", ":lua require('dapui').toggle()<CR>", { desc = "toggle debug ui", noremap = true })
@@ -47,3 +49,7 @@ keymap.set(
 keymap.set("n", "<leader>i", ":DapStepInto<CR>", { noremap = true })
 keymap.set("n", "<leader>O", ":DapStepOut<CR>", { noremap = true })
 keymap.set("n", "<leader>o", ":DapStepOver<CR>", { noremap = true })
+
+-- git
+keymap.set("n", "<leader>gg", ":terminal lazygit<CR>", { desc = "open lazygit", noremap = true })
+keymap.set("n", "<leader>gt", ":tabnew<CR>:terminal lazygit<CR>", { desc = "open new tab & lazygit", noremap = true })
