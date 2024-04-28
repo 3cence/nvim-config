@@ -9,6 +9,10 @@ keymap.set("i", "kj", "<Esc>")
 vim.api.nvim_set_keymap("n", "<C-s>", ":w<CR>", { noremap = true })
 vim.api.nvim_set_keymap("i", "<C-s>", "<C-o>:write<CR>a", { noremap = true })
 
+-- auto-session
+keymap.set("n", "<leader>wr", "<cmd>SessionRestore<CR>", { desc = "restore session for cwd" }) -- restore last workspace session for current directory
+keymap.set("n", "<leader>ws", "<cmd>SessionSave<CR>", { desc = "save session for auto session root dir" }) -- save workspace session for current working directory
+
 -- for clearing highlight on search
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "clear search highlights" })
 
