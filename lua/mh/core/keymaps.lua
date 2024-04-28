@@ -3,7 +3,7 @@ vim.g.mapleader = " "
 local keymap = vim.keymap
 
 -- normal mode
--- keymap.set("i", "kj", "<Esc>")
+keymap.set("i", "kj", "<Esc>")
 
 -- save file with ctrl-s
 vim.api.nvim_set_keymap("n", "<C-s>", ":w<CR>", { noremap = true })
@@ -58,6 +58,10 @@ keymap.set("n", "<leader>i", ":DapStepInto<CR>", { noremap = true })
 keymap.set("n", "<leader>O", ":DapStepOut<CR>", { noremap = true })
 keymap.set("n", "<leader>o", ":DapStepOver<CR>", { noremap = true })
 
--- git
-keymap.set("n", "<leader>gg", ":terminal lazygit<CR>", { desc = "open lazygit", noremap = true })
-keymap.set("n", "<leader>gt", ":tabnew<CR>:terminal lazygit<CR>", { desc = "open new tab & lazygit", noremap = true })
+-- lazygit
+keymap.set(
+	"n",
+	"<leader>gg",
+	":tabnew<CR>:terminal lazygit<CR>:startinsert<CR>",
+	{ desc = "open new tab & lazygit", noremap = true }
+)
