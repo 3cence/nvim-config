@@ -66,6 +66,6 @@ keymap.set("n", "<leader>o", ":DapStepOver<CR>", { noremap = true })
 keymap.set(
 	"n",
 	"<leader>gg",
-	":tabnew<CR>:terminal lazygit<CR>:startinsert<CR>",
+	":tabnew<CR>:terminal lazygit<CR>:tabm -1<CR>:startinsert<CR>",
 	{ desc = "open new tab & lazygit", noremap = true }
 )
