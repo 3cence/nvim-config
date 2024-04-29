@@ -31,6 +31,16 @@ keymap.set("n", "<leader>sh", ":split<CR>", { desc = "split window horizontally"
 keymap.set("n", "<leader>sv", "<C-w>=", { desc = "make windows equal size" })
 keymap.set("n", "<leader>sl", "<cmd>close<CR>", { desc = "close current split" })
 
+keymap.set("n", "<leader>h", "<cmd>vert-resize -3<CR>", { desc = "resize" })
+keymap.set("n", "<leader>j", "<cmd>resize -3<CR>", { desc = "resize" })
+keymap.set("n", "<leader>k", "<cmd>resize +3<CR>", { desc = "resize" })
+keymap.set("n", "<leader>l", "<cmd>vert-resize +3<CR>", { desc = "resize" })
+
+keymap.set("n", "<leader>H", "<cmd>vert-resize -30<CR>", { desc = "resize" })
+keymap.set("n", "<leader>J", "<cmd>resize -15<CR>", { desc = "resize" })
+keymap.set("n", "<leader>K", "<cmd>resize +15<CR>", { desc = "resize" })
+keymap.set("n", "<leader>L", "<cmd>vert-resize +30<CR>", { desc = "resize" })
+
 -- telescope
 keymap.set("n", "<leader><leader>", "<cmd>Telescope find_files<cr>", { desc = "fuzzy find files in cwd" })
 keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "fuzzy find recent files" })
@@ -50,18 +60,18 @@ keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "open current buffer
 keymap.set("n", "<leader>bc", "<cmd>bdelete<CR>", { desc = "close current buffer" })
 
 -- debugger
-keymap.set("n", "<leader>dt", ":lua require('dapui').toggle()<CR>", { desc = "toggle debug ui", noremap = true })
-keymap.set("n", "<leader>db", ":DapToggleBreakpoint<CR>", { noremap = true })
-keymap.set("n", "<leader>dc", ":DapContinue<CR>", { noremap = true })
+keymap.set("n", "<leader>dt", "<cmd>lua require('dapui').toggle()<CR>", { desc = "toggle debug ui", noremap = true })
+keymap.set("n", "<leader>db", "<cmd>DapToggleBreakpoint<CR>", { noremap = true })
+keymap.set("n", "<leader>dc", "<cmd>DapContinue<CR>", { noremap = true })
 keymap.set(
 	"n",
 	"<leader>dr",
-	":lua require('dapui').open({reset=true})<CR>",
+	"<cmd>lua require('dapui').open({reset=true})<CR>",
 	{ desc = "reset debug ui", noremap = true }
 )
-keymap.set("n", "<leader>i", ":DapStepInto<CR>", { noremap = true })
-keymap.set("n", "<leader>O", ":DapStepOut<CR>", { noremap = true })
-keymap.set("n", "<leader>o", ":DapStepOver<CR>", { noremap = true })
+keymap.set("n", "<leader>i", "<cmd>DapStepInto<CR>", { noremap = true })
+keymap.set("n", "<leader>O", "<cmd>DapStepOut<CR>", { noremap = true })
+keymap.set("n", "<leader>o", "<cmd>DapStepOver<CR>", { noremap = true })
 
 -- lazygit
 keymap.set(
