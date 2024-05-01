@@ -37,7 +37,7 @@ return {
 				type = "gdb",
 				request = "launch",
 				program = function()
-					return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/build/", "file")
+					return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/build-debug/", "file")
 				end,
 				cwd = "${workspaceFolder}",
 				stopAtBeginningOfMainSubprogram = false,
