@@ -31,15 +31,15 @@ keymap.set("n", "<leader>sh", ":split<CR>", { desc = "split window horizontally"
 keymap.set("n", "<leader>sv", "<C-w>=", { desc = "make windows equal size" })
 keymap.set("n", "<leader>sl", "<cmd>close<CR>", { desc = "close current split" })
 
-keymap.set("n", "<leader>h", "<cmd>vert-resize -3<CR>", { desc = "resize" })
+keymap.set("n", "<leader>h", "<cmd>vert-resize +3<CR>", { desc = "resize" })
 keymap.set("n", "<leader>j", "<cmd>resize -3<CR>", { desc = "resize" })
 keymap.set("n", "<leader>k", "<cmd>resize +3<CR>", { desc = "resize" })
-keymap.set("n", "<leader>l", "<cmd>vert-resize +3<CR>", { desc = "resize" })
+keymap.set("n", "<leader>l", "<cmd>vert-resize -3<CR>", { desc = "resize" })
 
-keymap.set("n", "<leader>H", "<cmd>vert-resize -30<CR>", { desc = "resize" })
+keymap.set("n", "<leader>H", "<cmd>vert-resize +30<CR>", { desc = "resize" })
 keymap.set("n", "<leader>J", "<cmd>resize -15<CR>", { desc = "resize" })
 keymap.set("n", "<leader>K", "<cmd>resize +15<CR>", { desc = "resize" })
-keymap.set("n", "<leader>L", "<cmd>vert-resize +30<CR>", { desc = "resize" })
+keymap.set("n", "<leader>L", "<cmd>vert-resize -30<CR>", { desc = "resize" })
 
 -- telescope
 keymap.set("n", "<leader><leader>", "<cmd>Telescope find_files<cr>", { desc = "fuzzy find files in cwd" })
@@ -77,6 +77,6 @@ keymap.set("n", "<leader>o", "<cmd>DapStepOver<CR>", { noremap = true })
 keymap.set(
 	"n",
 	"<leader>gg",
-	":tabnew<CR>:terminal lazygit<CR>:tabm -1<CR>:startinsert<CR>",
+	'<cmd>TermExec cmd="lazygit;exit" direction=float<CR>',
 	{ desc = "open new tab & lazygit", noremap = true }
 )
