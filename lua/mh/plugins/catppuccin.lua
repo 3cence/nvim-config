@@ -50,6 +50,23 @@ return {
 				},
 				-- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
 			},
+			integrations = {
+				native_lsp = {
+					enabled = true,
+					virtual_text = {
+						errors = {},
+						hints = {},
+						warnings = {},
+						information = {},
+					},
+					underlines = {
+						errors = { "undercurl" },
+						hints = { "undercurl" },
+						warnings = { "undercurl" },
+						information = { "undercurl" },
+					},
+				},
+			},
 		})
 
 		-- setup must be called before loading

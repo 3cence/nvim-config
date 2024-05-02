@@ -78,5 +78,5 @@ keymap.set(
 	"n",
 	"<leader>gg",
 	'<cmd>TermExec cmd="lazygit;exit" direction=float<CR>',
-	{ desc = "open new tab & lazygit", noremap = true }
+	{ desc = "open lazygit", noremap = true }
 )
