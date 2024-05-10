@@ -50,6 +50,7 @@ keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "find todos" })
 keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "list buffers" })
 
 -- tab and buffer management
+keymap.set("n", "<leader>rb", "<cmd>b#<CR>", { desc = "go to last buffer" })
 keymap.set("n", "<F5>", "<cmd>checkt<CR>", { desc = "reload active buffers" })
 keymap.set("n", "<leader>tt", "<cmd>tabnew<CR>", { desc = "open new tab" })
 keymap.set("n", "<leader>tl", "<cmd>tabclose<CR>", { desc = "close current tab" })
