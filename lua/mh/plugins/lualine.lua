@@ -4,42 +4,14 @@ return {
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 
 	config = function()
-		require("lualine").setup(
-			{
-				options = {
-					theme = "catppuccin",
-					-- ... the rest of your lualine config
-				},
-				sections = {
-					lualine_x = {
-						{
-							require("noice").api.statusline.mode.get,
-							cond = require("noice").api.statusline.mode.has,
-							color = { fg = "#ff9e64" },
-						},
-					},
-				},
-			} --[[ {
+		require("lualine").setup({
 			options = {
-				icons_enabled = true,
-				component_separators = "|",
-				section_separators = "",
+				theme = "catppuccin",
+				-- ... the rest of your lualine config
 			},
 			sections = {
-				lualine_x = {
-					{
-						require("noice").api.statusline.mode.get,
-						cond = require("noice").api.statusline.mode.has,
-						color = { fg = "#ff9e64" },
-					},
-				},
-				lualine_a = {
-					{
-						"buffers",
-					},
-				},
+				lualine_x = { "encoding", "filetype" },
 			},
-		} ]]
-		)
+		})
 	end,
 }
