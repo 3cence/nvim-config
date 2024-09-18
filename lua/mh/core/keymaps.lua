@@ -5,6 +5,10 @@ local keymap = vim.keymap
 -- normal mode
 keymap.set("i", "kj", "<Esc>")
 
+-- make j k gj and gk by defeault
+keymap.set("n", "j", "gj", { desc = "softline navigation" })
+keymap.set("n", "k", "gk", { desc = "softline navigation" })
+
 -- save file with ctrl-s
 vim.api.nvim_set_keymap("n", "<C-s>", ":w<CR>", { noremap = true })
 vim.api.nvim_set_keymap("i", "<C-s>", "<C-o>:write<CR>a", { noremap = true })
