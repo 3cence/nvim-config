@@ -13,6 +13,14 @@ vim.api.nvim_set_keymap("i", "<C-s>", "<C-o>:write<CR>a", { noremap = true })
 keymap.set("n", "<leader>wr", "<cmd>SessionRestore<CR>", { desc = "restore session for cwd" }) -- restore last workspace session for current directory
 keymap.set("n", "<leader>ws", "<cmd>SessionSave<CR>", { desc = "save session for auto session root dir" }) -- save workspace session for current working directory
 
+-- Enable word wrap
+keymap.set("n", "<leader>ww", "<cmd>set linebreak<CR><cmd>set wrap<CR>", { desc = "enable line breaks" })
+keymap.set("n", "<leader>wd", "<cmd>set nolinebreak<CR><cmd>set nowrap<CR>", { desc = "enable line breaks" })
+
+-- Spell Checking
+keymap.set("n", "<leader>zz", "<cmd>setlocal spell spelllang=en_us<CR>", { desc = "Enable Spell Checking" })
+keymap.set("n", "<leader>zd", "<cmd>setlocal spell spelllang=<CR>", { desc = "Disable Spell Checking" })
+
 -- for clearing highlight on search
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "clear search highlights" })
 
