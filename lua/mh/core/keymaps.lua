@@ -13,6 +13,10 @@ keymap.set("n", "k", "gk", { desc = "softline navigation" })
 vim.api.nvim_set_keymap("n", "<C-s>", ":w<CR>", { noremap = true })
 vim.api.nvim_set_keymap("i", "<C-s>", "<C-o>:write<CR>a", { noremap = true })
 
+-- Better spelling jump
+keymap.set("n", "z[", "[s", { desc = "Jump to previous incorrect spelling" })
+keymap.set("n", "z]", "]s", { desc = "Jump to next incorrect spelling" })
+
 -- auto-session
 keymap.set("n", "<leader>wr", "<cmd>SessionRestore<CR>", { desc = "restore session for cwd" }) -- restore last workspace session for current directory
 keymap.set("n", "<leader>ws", "<cmd>SessionSave<CR>", { desc = "save session for auto session root dir" }) -- save workspace session for current working directory
