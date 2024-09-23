@@ -8,6 +8,8 @@ keymap.set("i", "kj", "<Esc>")
 -- make j k gj and gk by defeault
 keymap.set("n", "j", "gj", { desc = "softline navigation" })
 keymap.set("n", "k", "gk", { desc = "softline navigation" })
+-- Toggle Markdown Render
+keymap.set("n", "<leader>md", "<cmd>RenderMarkdown toggle<CR>", { desc = "Toggle Markdown Rendering" })
 
 -- save file with ctrl-s
 vim.api.nvim_set_keymap("n", "<C-s>", ":w<CR>", { noremap = true })
