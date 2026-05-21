@@ -10,8 +10,8 @@ opt.number = true
 vim.g.autoformat = false
 
 -- tabs & indentation
-opt.tabstop = 3
-opt.shiftwidth = 3
+opt.tabstop = 2
+opt.shiftwidth = 2
 opt.expandtab = true
 opt.autoindent = true
 
